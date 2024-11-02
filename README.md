@@ -175,21 +175,21 @@
 
 > ***刚进入界面或切换账号后需要点击刷新按钮刷新一下账户信息（余额显示、所属房屋列表等）***
 
-![image-20241102205745826](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102205745826.png)
+![image-20241102205745826](.\assets\image-20241102205745826.png)
 
-![image-20241102205805011](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102205805011.png)
+![image-20241102205805011](.\assets\image-20241102205805011.png)
 
 
 
 ##### 铸造房屋
 
-![image-20241102205847368](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102205847368.png)
+![image-20241102205847368](.\assets\image-20241102205847368.png)
 
 点击确认后，就可以申领一个房屋
 
-![image-20241102210037952](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102210037952.png)
+![image-20241102210037952](.\assets\image-20241102210037952.png)
 
-![image-20241102210056402](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102210056402.png)
+![image-20241102210056402](.\assets\image-20241102210056402.png)
 
 从上图可以看出已经增加了一个房屋
 
@@ -199,9 +199,9 @@
 
 填入想要出售房屋的 House ID 已经出售价格，即可出售房屋
 
-![image-20241102210256138](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102210256138.png)
+![image-20241102210256138](.\assets\image-20241102210256138.png)
 
-![image-20241102210322136](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102210322136.png)
+![image-20241102210322136](.\assets\image-20241102210322136.png)
 
 
 
@@ -213,19 +213,19 @@
 
 此时账号信息如下：
 
-<img src="D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102214955985.png" alt="image-20241102214955985" style="zoom:67%;" />
+<img src=".\assets\image-20241102214955985.png" alt="image-20241102214955985" style="zoom:67%;" />
 
 为了更清晰地检验合约编写的合理性与正确性，我将用User 1 挂售一个房屋，用 User 2去购买（House ID 为 2的房屋是User 1的），相关截图如下：
 
-![image-20241102215022452](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102215022452.png)
+![image-20241102215022452](.\assets\image-20241102215022452.png)
 
 
 
-![image-20241102215042346](D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102215042346.png)
+![image-20241102215042346](.\assets\image-20241102215042346.png)
 
 交易完成后三方的余额变更如下，很明显的看到 Manager 余额多了余额 5ETH（手续费），User 1多了约 10 ETH，User 2少了 15ETH。
 
-<img src="D:\Desktop\区块链与数字货币\hw\hw2\ZJU-blockchain-course-2024\assets\image-20241102215050554.png" alt="image-20241102215050554" style="zoom:67%;" />
+<img src=".\assets\image-20241102215050554.png" alt="image-20241102215050554" style="zoom:67%;" />
 
 
 
