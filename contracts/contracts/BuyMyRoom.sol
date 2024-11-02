@@ -30,7 +30,7 @@ contract BuyMyRoom is ERC721, Ownable {
     uint256 public maxFeePercentage = 20;     // 手续费最大比例（20%）
     address public manager;                    // 管理员，作为合约的部署者收取手续费
 
-    constructor() ERC721("BuyMyRoom", "BMR") Ownable() {
+    constructor() ERC721("BuyMyRoom", "BMR") Ownable(msg.sender) {
         manager = msg.sender;
         console.log("Contract deployed by: %s", msg.sender);
     }
