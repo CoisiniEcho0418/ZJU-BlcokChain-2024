@@ -27,9 +27,10 @@ contract BuyMyRoom is ERC721, Ownable {
     mapping(uint256 => House) public houses; // 存储房屋信息
     uint256 public nextHouseId = 0;               // 下一个房屋的houseId，初始值为0
     uint256 public feePercentage = 5;         // 手续费比例（0.5%）
+    uint256 public maxFeePercentage = 20;     // 手续费最大比例（20%）
     address public manager;                    // 管理员，作为合约的部署者收取手续费
 
-    constructor() ERC721("BuyMyRoom", "BMR") Ownable(msg.sender) {
+    constructor() ERC721("BuyMyRoom", "BMR") Ownable() {
         manager = msg.sender;
         console.log("Contract deployed by: %s", msg.sender);
     }
@@ -38,13 +39,12 @@ contract BuyMyRoom is ERC721, Ownable {
         return manager;
     }
 
-    // 铸造房屋NFT（只有管理员可以铸造）
-    function mintHouse(address to) external returns (uint256) {
-        require(msg.sender == manager, "Only the manager can mint");
+    // 铸造房屋NFT
+    function mintHouse() external returns (uint256) {
         uint256 tokenId = nextHouseId++; // 使用nextHouseId
-        _mint(to, tokenId);
-        houses[tokenId] = House(to, 0, block.timestamp, false);
-        console.log("House minted %s to %s", tokenId, to);
+        _mint(msg.sender, tokenId);
+        houses[tokenId] = House(msg.sender, 0, block.timestamp, false);
+        console.log("House minted %s by %s", tokenId, msg.sender);
         return tokenId; // 返回新生成的 tokenId
     }
 
@@ -69,6 +69,15 @@ contract BuyMyRoom is ERC721, Ownable {
         uint256 listingDuration = block.timestamp - house.listedTimestamp;
         // 计算手续费
         uint256 fee = (listingDuration * feePercentage * house.price) / 1000; // 手续费 = 挂单时长 * 固定比例 * 房产价格
+
+        // 确保手续费不超过最大限制
+        uint256 maxFee = (house.price * maxFeePercentage) / 100; // 最大手续费
+        if (fee > maxFee) {
+            fee = maxFee; // 限制手续费为最大手续费
+        }
+
+        // 将NFT转移给新拥有者
+        _transfer(ownerOf(tokenId), msg.sender, tokenId);
 
         payable(manager).transfer(fee); // 将手续费转给合约部署者
         payable(house.owner).transfer(house.price - fee); // 将剩余款项转给房屋卖家
